@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Rose Gold Love Letters</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+:root {
+    --bg-dark: #2d142c;
+    --machine-body: linear-gradient(135deg, #f7cac9 0%, #e0a8a8 100%);
+    --rose-gold: linear-gradient(to bottom, #e6c7c2, #cca49e 50%, #b38f89 100%);
+    --gold-shine: linear-gradient(135deg, #ffd700, #fff8dc, #ffed4e, #ffd700);
+    --paper: #fffdf9;
+    --accent-red: #c0392b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    font-family: 'Fredoka One', cursive;
+    background: radial-gradient(circle at center, var(--bg-dark) 0%, #000 100%);
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+    overflow: hidden;
+    padding: 0;
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
+
+.header-title {
+    position: relative; width: 100%; text-align: center; z-index: 5;
+    font-family: 'Dancing Script', cursive; color: #f7cac9; font-size: clamp(26px, 6vw, 48px);
+    text-shadow: 0 3px 8px rgba(0,0,0,0.6), 0 0 25px rgba(247, 202, 201, 0.4);
+    animation: titleGlow 3s ease-in-out infinite;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+@keyframes titleGlow {
+    0%, 100% { text-shadow: 0 3px 8px rgba(0,0,0,0.6), 0 0 25px rgba(247, 202, 201, 0.4); }
+    50% { text-shadow: 0 3px 8px rgba(0,0,0,0.6), 0 0 35px rgba(247, 202, 201, 0.6); }
+}
+
+
+.machine-body {
+    position: relative; 
+    width: 98vw;
+    max-width: 500px;
+    height: auto;
+    min-height: min(75vh, 650px);
+    background: var(--machine-body);
+    border-radius: 30px 30px 20px 20px;
+    box-shadow: inset 0 0 0 8px #e6c7c2, inset 0 0 30px rgba(0,0,0,0.2), 0 30px 60px rgba(0,0,0,0.7);
+    display: flex; flex-direction: column; padding: 12px; 
+    border: 3px solid #b38f89;
+}
+
+.machine-top-deco {
+    position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 25px; background: var(--rose-gold);
+    border-radius: 15px 15px 0 0; z-index: -1;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.4); border: 2px solid #b38f89;
+}
+
+.glass-cabinet {
+    flex: 1; 
+    background: linear-gradient(to bottom, rgba(255,235,235,0.15), rgba(255,200,200,0.08));
+    border: 4px solid rgba(230, 199, 194, 0.9); 
+    border-radius: 20px;
+    position: relative; overflow: hidden;
+    box-shadow: inset 0 0 60px rgba(255,255,255,0.25), inset 0 10px 30px rgba(255,255,255,0.1);
+    backdrop-filter: blur(1px);
+}
+
+.cabinet-floor {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 45px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.25));
+    border-top: 2px solid rgba(255,255,255,0.3); z-index: 1;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.2);
+}
+
+
+.rail {
+    position: absolute; top: 12px; left: 12px; right: 12px; height: 14px;
+    background: var(--rose-gold); border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.35), inset 0 2px 5px rgba(255,255,255,0.3);
+    border: 1px solid #b38f89;
+}
+
+.claw-mechanism {
+    position: absolute; top: 18px; left: 50%; z-index: 20;
+    transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex; flex-direction: column; align-items: center;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
+}
+
+
+.claw-cable {
+    width: 5px; height: 50px;
+    background: linear-gradient(to right, #8a6f66, #e6c7c2, #8a6f66);
+    transition: height 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3), inset 0 0 3px rgba(255,255,255,0.4);
+    border-radius: 3px;
+    position: relative;
+}
+
+.claw-cable::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 2px; height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+}
+
+
+.claw-head {
+    width: 52px; height: 32px; 
+    background: var(--gold-shine);
+    border-radius: 10px 10px 5px 5px; 
+    z-index: 21; position: relative;
+    box-shadow: 
+        0 6px 15px rgba(0,0,0,0.5),
+        inset 0 -2px 5px rgba(0,0,0,0.2),
+        inset 0 2px 8px rgba(255,255,255,0.5);
+    border: 2px solid #cfa39b;
+    transform: translateX(-50%);
+    display: flex; justify-content: center; align-items: flex-end;
+}
+
+.claw-head::before {
+    content: '';
+    position: absolute;
+    top: 5px; left: 50%;
+    transform: translateX(-50%);
+    width: 8px; height: 8px;
+    background: radial-gradient(circle, #fff, #ffd700);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255,215,0,0.6);
+}
+
+
+.claw-finger {
+    position: absolute; 
+    top: 24px; 
+    width: 11px; 
+    height: 48px;
+    background: linear-gradient(135deg, #e6c7c2 0%, #cca49e 50%, #b38f89 100%);
+    border-radius: 0 0 5px 5px;
+    transform-origin: top center; 
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #b38f89;
+    box-shadow: 
+        inset -2px 0 5px rgba(0,0,0,0.25),
+        inset 2px 0 5px rgba(255,255,255,0.3),
+        2px 4px 8px rgba(0,0,0,0.4);
+}
+
+
+.claw-finger::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 2px;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent 60%);
+    border-radius: 2px;
+}
+
+
+.claw-finger::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid #9a7a74;
+}
+
+.finger-left { 
+    left: 6px; 
+    transform: rotate(28deg); 
+}
+.finger-right { 
+    right: 6px; 
+    transform: rotate(-28deg); 
+}
+
+
+.claw-mechanism.open .finger-left { 
+    transform: rotate(55deg); 
+}
+.claw-mechanism.open .finger-right { 
+    transform: rotate(-55deg); 
+}
+.claw-mechanism.closed .finger-left { 
+    transform: rotate(-8deg); 
+}
+.claw-mechanism.closed .finger-right { 
+    transform: rotate(8deg); 
+}
+
+
+@keyframes grabGlow {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(255,215,0,0.4)); }
+    50% { filter: drop-shadow(0 0 15px rgba(255,215,0,0.8)); }
+}
+
+.claw-mechanism.closed {
+    animation: grabGlow 0.5s ease-in-out;
+}
+
+
+.prizes-grid {
+    position: absolute; 
+    bottom: 12px; 
+    left: 4px; 
+    right: 4px; 
+    height: 62px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+    justify-items: center;
+    align-items: end;
+    z-index: 10;
+    padding: 0;
+}
+
+.prize {
+    width: 100%;
+    max-width: 100%;
+    height: 52px;
+    background: linear-gradient(to bottom, #fffdf9 0%, #f5f1eb 50%, #e8e4de 100%);
+    border: 2px solid #d4c6b8; 
+    border-radius: 6px;
+    box-shadow: 
+        0 10px 15px rgba(0,0,0,0.2),
+        inset 0 2px 5px rgba(255,255,255,0.6);
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    position: relative; 
+    transition: all 0.3s ease;
+}
+
+.prize:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 18px rgba(0,0,0,0.25);
+}
+
+
+.prize::before {
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-left: 50% solid transparent; 
+    border-right: 50% solid transparent;
+    border-top: 22px solid #e8ded4;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
+}
+
+
+.prize::after {
+    content: '♥'; 
+    color: var(--accent-red); 
+    font-size: 16px; 
+    position: absolute; 
+    top: 10px; 
+    z-index: 2; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    animation: heartBeat 2s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    10% { transform: scale(1.1); }
+    20% { transform: scale(1); }
+}
+
+
+@keyframes prizeSwing {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(6deg); }
+    50% { transform: translateX(-50%) rotate(-5deg); }
+    75% { transform: translateX(-50%) rotate(3deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+.prize.in-claw {
+    position: absolute; 
+    bottom: -32px;
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 0; 
+    margin: 0; 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3); 
+    animation: prizeSwing 1.8s ease-in-out infinite;
+}
+
+
+.controls-panel {
+    height: auto;
+    min-height: 100px;
+    background: linear-gradient(to bottom, #f7cac9, #e0a8a8);
+    margin-top: 12px; 
+    border-radius: 25px; 
+    padding: 15px 20px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: 
+        0 12px 30px rgba(0,0,0,0.3), 
+        inset 0 3px 8px rgba(255,255,255,0.5);
+    border: 3px solid #cfa39b;
+}
+
+.btn-group { 
+    display: flex; 
+    gap: min(22px, 4vw); 
+}
+
+.btn {
+    border: none; 
+    outline: none; 
+    cursor: pointer; 
+    border-radius: 50%;
+    color: #5a3a3a; 
+    font-family: inherit; 
+    font-weight: bold;
+    background: var(--rose-gold); 
+    box-shadow: 
+        0 7px 0 #b38f89, 
+        0 12px 20px rgba(0,0,0,0.3),
+        inset 0 2px 5px rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.5); 
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.btn:active { 
+    transform: translateY(7px); 
+    box-shadow: 
+        0 0 0 #b38f89, 
+        0 5px 10px rgba(0,0,0,0.3),
+        inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-arrow { 
+    width: clamp(60px, 16vw, 75px);
+    height: clamp(60px, 16vw, 75px);
+    font-size: clamp(22px, 5.5vw, 30px); 
+}
+
+.btn-action { 
+    width: clamp(75px, 20vw, 95px);
+    height: clamp(75px, 20vw, 95px);
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffc3a0); 
+    font-size: clamp(28px, 7vw, 36px); 
+    color: white;
+    box-shadow: 
+        0 7px 0 #e8859a, 
+        0 12px 25px rgba(255, 154, 158, 0.5),
+        inset 0 2px 8px rgba(255,255,255,0.5);
+}
+
+.btn-action:active {
+    box-shadow: 
+        0 0 0 #e8859a, 
+        0 5px 10px rgba(255, 154, 158, 0.4),
+        inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.modal-overlay {
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: rgba(45, 20, 44, 0.9); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 100; 
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.modal-overlay.visible { 
+    opacity: 1; 
+    pointer-events: all; 
+}
+
+.letter-card {
+    background: var(--paper); 
+    width: 90%; 
+    max-width: 400px; 
+    padding: 45px 35px;
+    border-radius: 6px; 
+    text-align: center; 
+    transform: scale(0.85) rotate(-2deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6); 
+    position: relative;
+    background-image: radial-gradient(circle, #e6c7c2 1.5px, transparent 1.5px); 
+    background-size: 22px 22px;
+    border: 6px solid #f7cac9;
+}
+
+.modal-overlay.visible .letter-card { 
+    transform: scale(1) rotate(0deg); 
+}
+
+.letter-content {
+    font-family: 'Dancing Script', cursive; 
+    font-size: clamp(24px, 5vw, 30px); 
+    color: #5a3a3a;
+    margin: 30px 0; 
+    min-height: 120px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.letter-stamp { 
+    font-size: 56px; 
+    display: block; 
+    color: var(--accent-red);
+    animation: stampRotate 4s ease-in-out infinite;
+}
+
+@keyframes stampRotate {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.btn-close {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffc3a0); 
+    color: white;
+    padding: 14px 40px; 
+    border: none; 
+    border-radius: 50px;
+    font-family: 'Fredoka One', cursive; 
+    font-size: clamp(16px, 4vw, 19px); 
+    cursor: pointer;
+    margin-top: 25px; 
+    box-shadow: 0 6px 20px rgba(255, 154, 158, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.btn-close:active {
+    transform: scale(0.95);
+}
+
+
+@media (min-width: 600px) {
+    body {
+        justify-content: center;
+        padding-top: 0;
+    }
+    
+    .header-title {
+        position: absolute;
+        top: max(20px, env(safe-area-inset-top));
+        margin-bottom: 0;
+    }
+    
+    .machine-body {
+        max-width: 550px;
+        min-height: 650px;
+    }
+    
+    .prizes-grid {
+        gap: 10px;
+        padding: 0 6px;
+    }
+    
+    .prize {
+        max-width: 65px;
+        height: 50px;
+    }
+    
+    .controls-panel {
+        min-height: 120px;
+        padding: 15px 30px;
+    }
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+    .machine-body {
+        max-width: 600px;
+        min-height: 70vh;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header-title">Nuestras Cartas de Amor</div>
+
+<div class="machine-body">
+    <div class="machine-top-deco"></div>
+    <div class="glass-cabinet" id="cabinet">
+        <div class="rail"></div>
+        <div class="cabinet-floor"></div>
+        
+        <div class="claw-mechanism" id="clawMech">
+            <div class="claw-cable" id="clawCable"></div>
+            <div class="claw-head" id="clawHead">
+                <div class="claw-finger finger-left"></div>
+                <div class="claw-finger finger-right"></div>
+            </div>
+        </div>
+        
+        <div class="prizes-grid" id="prizesGrid"></div>
+    </div>
+
+    <div class="controls-panel">
+        <div class="btn-group">
+            <button class="btn btn-arrow" id="btnLeft">◀</button>
+            <button class="btn btn-arrow" id="btnRight">▶</button>
+        </div>
+        <button class="btn btn-action" id="btnGrab">💖</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal">
+    <div class="letter-card">
+        <span class="letter-stamp">🌹</span>
+        <div class="letter-content" id="letterText"></div>
+        <button class="btn-close" onclick="closeModal()">Guardar en el Corazón</button>
+    </div>
+</div>
+
+<canvas id="confetti" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:200;display:none;"></canvas>
+
+<script>
+const prizesData = [
+    { text: "Eres mi Jedi favorito en esta galaxia muy lejana �" },
+    { text: "Cruzaría el hiperespacio solo para abrazarte 🚀" },
+    { text: "Eres la canción que tengo en repeat todo el día 🎶" },
+    { text: "Mi destino favorito siempre serás tú 🗺️💕" },
+    { text: "Eres el café que necesito cada mañana ☕💕" },
+    { text: "Tenemos mucho 'contacto físico' pendiente de recuperar 😏🔥" }
+];
+
+let state = { 
+    laneIndex: 2,
+    isMoving: false, 
+    hasPrizeData: null 
+};
+
+const clawMech = document.getElementById('clawMech');
+const clawHead = document.getElementById('clawHead');
+const clawCable = document.getElementById('clawCable');
+const prizesGrid = document.getElementById('prizesGrid');
+const modal = document.getElementById('modal');
+const letterText = document.getElementById('letterText');
+
+function initGame() {
+    prizesGrid.innerHTML = '';
+    for(let i=0; i<6; i++) {
+        const prize = document.createElement('div');
+        prize.className = 'prize';
+        prize.id = `prize-${i}`;
+        prize.dataset.index = i;
+        prizesGrid.appendChild(prize);
+    }
+    updateClawPos();
+}
+
+function moveClaw(direction) {
+    if (state.isMoving) return;
+    vibrate(10);
+    
+    if (direction === 'left' && state.laneIndex > 0) state.laneIndex--;
+    if (direction === 'right' && state.laneIndex < 5) state.laneIndex++;
+    
+    updateClawPos();
+}
+
+function updateClawPos() {
+    const gridRect = prizesGrid.getBoundingClientRect();
+    const gridWidth = gridRect.width;
+    const cellWidth = gridWidth / 6;
+    const leftOffset = gridRect.left;
+    
+    const targetX = leftOffset + (state.laneIndex * cellWidth) + (cellWidth / 2);
+    const cabinetRect = document.getElementById('cabinet').getBoundingClientRect();
+    const relativeX = targetX - cabinetRect.left;
+    const percentage = (relativeX / cabinetRect.width) * 100;
+    
+    clawMech.style.left = `${percentage}%`;
+}
+
+async function grabPrize() {
+    if (state.isMoving) return;
+    state.isMoving = true;
+    vibrate(50);
+    
+    clawMech.classList.add('open');
+    await wait(200);
+    
+    const clawRectStart = clawHead.getBoundingClientRect();
+    const gridRect = prizesGrid.getBoundingClientRect();
+    const distance = (gridRect.top - clawRectStart.bottom) + 30;
+    const finalHeight = 50 + Math.max(distance, 0);
+
+    clawCable.style.height = `${finalHeight}px`;
+    await wait(900);
+
+    const targetPrize = document.getElementById(`prize-${state.laneIndex}`);
+    let caught = false;
+    
+    if (targetPrize && targetPrize.style.visibility !== 'hidden') {
+        caught = true;
+        targetPrize.style.visibility = 'hidden';
+        
+        const prizeClone = document.createElement('div');
+        prizeClone.className = 'prize in-claw';
+        clawHead.appendChild(prizeClone);
+        
+        state.hasPrizeData = prizesData[state.laneIndex];
+    }
+
+    clawMech.classList.remove('open');
+    clawMech.classList.add('closed');
+    vibrate(100);
+    await wait(400);
+
+    clawCable.style.height = '50px'; 
+    await wait(1000);
+
+    if (state.hasPrizeData) {
+        showConfetti();
+        const clone = clawHead.querySelector('.prize.in-claw');
+        if(clone) clone.remove();
+        
+        await wait(200);
+        showModal(state.hasPrizeData);
+        state.hasPrizeData = null;
+    }
+    
+    clawMech.classList.remove('closed');
+    state.isMoving = false;
+}
+
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function showModal(data) {
+    letterText.textContent = data.text;
+    modal.classList.add('visible');
+    vibrate([100, 50, 100]);
+}
+
+function closeModal() {
+    modal.classList.remove('visible');
+    stopConfetti();
+    
+    let remaining = 0;
+    for(let i=0; i<6; i++) {
+        const p = document.getElementById(`prize-${i}`);
+        if(p && p.style.visibility !== 'hidden') remaining++;
+    }
+    
+    if(remaining === 0) {
+        setTimeout(() => { 
+            if(confirm("¿Quieres leer las cartas de nuevo?")) {
+                for(let i=0; i<6; i++) {
+                    document.getElementById(`prize-${i}`).style.visibility = 'visible';
+                }
+            } 
+        }, 500);
+    }
+}
+
+function vibrate(pattern) { if (navigator.vibrate) navigator.vibrate(pattern); }
+
+document.getElementById('btnLeft').addEventListener('click', () => moveClaw('left'));
+document.getElementById('btnRight').addEventListener('click', () => moveClaw('right'));
+document.getElementById('btnGrab').addEventListener('click', grabPrize);
+
+
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+let animationId, particles = [];
+
+function showConfetti() {
+    canvas.style.display = 'block'; 
+    canvas.width = window.innerWidth; 
+    canvas.height = window.innerHeight;
+    particles = [];
+    const colors = ['#ff9a9e', '#fad0c4', '#ffd700', '#fff', '#ff6b95', '#f7cac9'];
+    for(let i=0; i<120; i++) {
+        particles.push({
+            x: canvas.width/2, 
+            y: canvas.height/2, 
+            vx: (Math.random()-0.5)*12, 
+            vy: (Math.random()-0.5)*12-6,
+            color: colors[Math.floor(Math.random()*colors.length)], 
+            size: Math.random()*8+3,
+            rotation: Math.random()*360,
+            rotationSpeed: (Math.random()-0.5)*10
+        });
+    }
+    animate();
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+        p.x += p.vx; 
+        p.y += p.vy; 
+        p.vy += 0.25;
+        p.rotation += p.rotationSpeed;
+        
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+        ctx.restore();
+        
+        if(p.y > canvas.height) particles.splice(i, 1);
+    });
+    if(particles.length > 0) animationId = requestAnimationFrame(animate);
+    else canvas.style.display = 'none';
+}
+
+function stopConfetti() { 
+    cancelAnimationFrame(animationId); 
+    canvas.style.display = 'none'; 
+    particles = [];
+}
+
+window.addEventListener('resize', () => {
+    if (!state.isMoving) updateClawPos();
+});
+
+initGame();
+</script>
+</body>
+</html>
